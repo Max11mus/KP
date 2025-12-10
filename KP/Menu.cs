@@ -25,6 +25,7 @@ namespace KP
         private void button1_Click(object sender, EventArgs e)
         {
             Plus frm1 = new Plus();
+            frm1.FormClosed += ChildForm_FormClosed;
             this.Hide();
             frm1.Show();
         }
@@ -32,6 +33,7 @@ namespace KP
         private void button2_Click(object sender, EventArgs e)
         {
             Catalogs frm2 = new Catalogs();
+            frm2.FormClosed += ChildForm_FormClosed;
             this.Hide();
             frm2.Show();
         }
@@ -39,6 +41,7 @@ namespace KP
         private void button3_Click(object sender, EventArgs e)
         {
             //Search frm3 = new Search();
+            //frm3.FormClosed += ChildForm_FormClosed;
             //this.Hide();
             //frm3.Show();
         }
@@ -96,6 +99,7 @@ namespace KP
         private void button5_Click(object sender, EventArgs e)
         {
             Help frm4 = new Help();
+            frm4.FormClosed += ChildForm_FormClosed;
             this.Hide();
             frm4.Show();
         }
@@ -103,6 +107,7 @@ namespace KP
         private void button3_Click_1(object sender, EventArgs e)
         {
             About frm5 = new About();
+            frm5.FormClosed += ChildForm_FormClosed;
             this.Hide();
             frm5.Show();
         }
@@ -110,6 +115,7 @@ namespace KP
         private void button6_Click(object sender, EventArgs e)
         {
             About frm6 = new About();
+            frm6.FormClosed += ChildForm_FormClosed;
             this.Hide();
             frm6.Show();
         }
@@ -124,5 +130,22 @@ namespace KP
             }
         }
 
+        private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Покажемо головну форму, якщо вона не знищується
+            if (!this.IsDisposed && !this.Disposing)
+            {
+                this.Show();
+                this.BringToFront();
+                try
+                {
+                    this.Activate();
+                }
+                catch
+                {
+                    // Ignore if activation fails (rare on some OS states)
+                }
+            }
+        }
     }
 }

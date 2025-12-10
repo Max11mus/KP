@@ -15,7 +15,7 @@ namespace KP
         public static List<Book> LoadBooksFromTxt(string dataFileName)
         {
             // Разделитель определяется локально
-            char delimiter = '|';
+            char delimiter = '/';
 
             if (!File.Exists(dataFileName))
             {
