@@ -30,7 +30,6 @@
         {
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -68,15 +67,6 @@
             this.btnNext.Text = "Пошук";
             this.btnNext.UseVisualStyleBackColor = false;
             this.btnNext.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.Color.Bisque;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 49);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(280, 394);
-            this.listBox1.TabIndex = 4;
             // 
             // groupBox1
             // 
@@ -147,9 +137,11 @@
             // dataGridViewBooks
             // 
             this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBooks.Location = new System.Drawing.Point(298, 251);
+            this.dataGridViewBooks.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewBooks.Location = new System.Drawing.Point(2, 240);
             this.dataGridViewBooks.Name = "dataGridViewBooks";
-            this.dataGridViewBooks.Size = new System.Drawing.Size(629, 447);
+            this.dataGridViewBooks.ReadOnly = true;
+            this.dataGridViewBooks.Size = new System.Drawing.Size(938, 447);
             this.dataGridViewBooks.TabIndex = 8;
             // 
             // Catalogs
@@ -163,7 +155,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
             this.Name = "Catalogs";
@@ -180,7 +171,6 @@
         #endregion
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

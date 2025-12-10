@@ -17,8 +17,9 @@ namespace KP
         private List<Book> _books;
         private int _currentIndex = -1; // Поточний індекс у списку книг
 
-        // BindingSource для зв'язування з DataGridView
+        // BindingSource і BindingList для зв'язування з DataGridView
         private readonly BindingSource _bindingSource = new BindingSource();
+        private BindingList<Book> _bindingList;
 
         public Catalogs()
         {
@@ -55,14 +56,7 @@ namespace KP
                 // Заповнюємо DataGridView через BindingList
                 var bindList = new BindingList<Book>(_books);
                 _bindingSource.DataSource = bindList;
-
-                // Також заповнімо listBox1 назвою книг для простого перегляду
-                listBox1.Items.Clear();
-                foreach (var b in _books)
-                {
-                    listBox1.Items.Add(b.Nazva);
-                }
-
+                                
                 if (_books.Count > 0)
                 {
                     _currentIndex = 0;
@@ -93,12 +87,7 @@ namespace KP
 
             var book = _books[index];
 
-            // Показуємо назву у listBox1 (і виділяємо рядок), інші деталі можна відобразити окремими контролами
-            if (listBox1.Items.Count > index)
-            {
-                listBox1.SelectedIndex = index;
-            }
-
+            
             // Якщо є місця для деталізації (наприклад, groupBox1), можна тут оновити текст/зображення.
             // Залишимо лише оновлення зображення, якщо воно є.
             try
@@ -116,7 +105,6 @@ namespace KP
 
         private void ClearBookDetails()
         {
-            listBox1.ClearSelected();
             // Якщо були текстові поля для деталей, очистіть їх тут.
             UpdateNavigationButtons();
         }
