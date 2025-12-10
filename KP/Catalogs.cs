@@ -25,13 +25,48 @@ namespace KP
         {
             InitializeComponent();
 
-            // Налаштування DataGridView (один раз)
-            dataGridViewBooks.AutoGenerateColumns = true;
+            // Покажемо тільки потрібні колонки — вимикаємо авто-генерацію колонок
+            dataGridViewBooks.AutoGenerateColumns = false;
+            SetupGridColumns();
+
             dataGridViewBooks.DataSource = _bindingSource;
             dataGridViewBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewBooks.MultiSelect = false;
             dataGridViewBooks.ReadOnly = true;
             dataGridViewBooks.SelectionChanged += DataGridViewBooks_SelectionChanged;
+        }
+
+        private void SetupGridColumns()
+        {
+            dataGridViewBooks.Columns.Clear();
+
+            var colNazva = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Nazva",
+                HeaderText = "Назва",
+                Name = "colNazva",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            };
+
+            var colAvtor = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Avtor",
+                HeaderText = "Автор",
+                Name = "colAvtor",
+                Width = 200,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            };
+
+            var colISBN = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ISBN",
+                HeaderText = "ISBN",
+                Name = "colISBN",
+                Width = 140,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            };
+
+            dataGridViewBooks.Columns.AddRange(new DataGridViewColumn[] { colNazva, colAvtor, colISBN });
         }
 
         private void Catalogs_Load(object sender, EventArgs e)
@@ -53,10 +88,24 @@ namespace KP
                 // Завантажуємо список з файлу (відносний шлях до робочої директорії процесу)
                 _books = BookDataService.LoadBooksFromTxt(BooksFileName) ?? new List<Book>();
 
-                // Заповнюємо DataGridView через BindingList
-                var bindList = new BindingList<Book>(_books);
-                _bindingSource.DataSource = bindList;
-                                
+                // Використовуємо поле _bindingList щоб зберегти прив'язки при рефреші
+                if (_bindingList == null)
+                {
+                    _bindingList = new BindingList<Book>(_books);
+                    _bindingSource.DataSource = _bindingList;
+                }
+                else
+                {
+                    _bindingList.RaiseListChangedEvents = false;
+                    _bindingList.Clear();
+                    foreach (var b in _books)
+                    {
+                        _bindingList.Add(b);
+                    }
+                    _bindingList.RaiseListChangedEvents = true;
+                    _bindingSource.ResetBindings(false);
+                }
+
                 if (_books.Count > 0)
                 {
                     _currentIndex = 0;
@@ -87,13 +136,10 @@ namespace KP
 
             var book = _books[index];
 
-            
             // Якщо є місця для деталізації (наприклад, groupBox1), можна тут оновити текст/зображення.
-            // Залишимо лише оновлення зображення, якщо воно є.
             try
             {
                 // Якщо у Book буде шлях до обкладинки, тут можна завантажити pictureBox1.Image.
-                // Зараз нічого не змінюємо — залишаємо існуюче зображення за замовчуванням.
             }
             catch
             {
@@ -112,10 +158,6 @@ namespace KP
         private void UpdateNavigationButtons()
         {
             // Якщо в UI є кнопки навігації для книг, можна ввімкнути/вимкнути їх тут.
-            // У вашому дизайні btnPrevious виконує перехід до головної, тому не чіпаємо його.
-            // Приклад для кнопок Next/Prev якщо вони використовуються для навігації по списку:
-            // btnNext.Enabled = _books != null && _currentIndex < _books.Count - 1;
-            // btnPrevious.Enabled = _books != null && _currentIndex > 0;
         }
 
         private void DataGridViewBooks_SelectionChanged(object sender, EventArgs e)
@@ -171,7 +213,7 @@ namespace KP
 
         private void button2_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -188,7 +230,7 @@ namespace KP
         {
 
         }
-              
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             Plus frm2 = new Plus();
