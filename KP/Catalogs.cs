@@ -108,14 +108,7 @@ namespace KP
                 }
                 else
                 {
-                    _bindingList.RaiseListChangedEvents = false;
-                    _bindingList.Clear();
-                    foreach (var b in _books)
-                    {
-                        _bindingList.Add(b);
-                    }
-                    _bindingList.RaiseListChangedEvents = true;
-                    _bindingSource.ResetBindings(false);
+                    _binding_list_refresh(_books);
                 }
 
                 // ГАРАНТОВАНИЙ рефреш UI — скинемо биндинги і перерисуємо грід
@@ -156,6 +149,19 @@ namespace KP
             }
         }
 
+        // Виніс оновлення _bindingList в окремий метод, щоб код чистіший
+        private void _binding_list_refresh(List<Book> books)
+        {
+            _bindingList.RaiseListChangedEvents = false;
+            _bindingList.Clear();
+            foreach (var b in books)
+            {
+                _bindingList.Add(b);
+            }
+            _bindingList.RaiseListChangedEvents = true;
+            _bindingSource.ResetBindings(false);
+        }
+
         // Виконуємо додатковий гарантований рефреш коли форма стає видимою
         protected override void OnShown(EventArgs e)
         {
@@ -190,22 +196,66 @@ namespace KP
 
             var book = _books[index];
 
-            // Якщо є місця для деталізації (наприклад, groupBox1), можна тут оновити текст/зображення.
-            try
-            {
-                // Якщо у Book буде шлях до обкладинки, тут можна завантажити pictureBox1.Image.
-            }
-            catch
-            {
-                // ігноруємо помилки при відображенні зображення
-            }
+            // Оновлюємо UI детального блоку — записуємо в текстбокси, якщо вони є на формі.
+            // Імена контролів припущені стандартні: txtNazva, txtAvtor, txtGod, txtJanr, txtMova, txtAge, txtStrn, txtISBN
+            SetTextBoxIfExists("txtNazva", book?.Nazva);
+            SetTextBoxIfExists("txtAvtor", book?.Avtor);
+            SetTextBoxIfExists("txtGod", book != null ? book.God.ToString() : string.Empty);
+            SetTextBoxIfExists("txtJanr", book?.Janr);
+            SetTextBoxIfExists("txtMova", book?.Mova);
+            SetTextBoxIfExists("txtAge", book?.Age);
+            SetTextBoxIfExists("txtStrn", book != null ? book.Strn.ToString() : string.Empty);
+            SetTextBoxIfExists("txtISBN", book?.ISBN);
+
+            // Якщо у вас інші імена полів — можна додати додаткові SetTextBoxIfExists виклики з цими іменами.
 
             UpdateNavigationButtons();
         }
 
+        // Універсальна допоміжна функція: знайти TextBox по імені (рекурсивно) і заповнити текст
+        private void SetTextBoxIfExists(string controlName, string text)
+        {
+            try
+            {
+                var found = this.Controls.Find(controlName, true);
+                if (found != null && found.Length > 0 && found[0] is TextBox tb)
+                {
+                    tb.Text = text ?? string.Empty;
+                }
+            }
+            catch
+            {
+                // ігноруємо помилки — відсутність контролу не критична
+            }
+        }
+            
         private void ClearBookDetails()
         {
-            // Якщо були текстові поля для деталей, очистіть їх тут.
+            // Очищуємо стандартні текстбокси, якщо вони є
+            SetTextBoxIfExists("txtNazva", string.Empty);
+            SetTextBoxIfExists("txtAvtor", string.Empty);
+            SetTextBoxIfExists("txtGod", string.Empty);
+            SetTextBoxIfExists("txtJanr", string.Empty);
+            SetTextBoxIfExists("txtMova", string.Empty);
+            SetTextBoxIfExists("txtAge", string.Empty);
+            SetTextBoxIfExists("txtStrn", string.Empty);
+            SetTextBoxIfExists("txtISBN", string.Empty);
+
+            // Якщо потрібне скидання pictureBox1 до дефолтного зображення:
+            try
+            {
+                var pics = this.Controls.Find("pictureBox1", true);
+                if (pics != null && pics.Length > 0 && pics[0] is PictureBox pb)
+                {
+                    // Якщо у ресурсах є дефолтне зображення — можна встановити його:
+                    // pb.BackgroundImage = Properties.Resources.Безымянный;
+                }
+            }
+            catch
+            {
+                // ігноруємо
+            }
+
             UpdateNavigationButtons();
         }
 
@@ -323,6 +373,16 @@ namespace KP
         }
 
         private void dataGridViewBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }

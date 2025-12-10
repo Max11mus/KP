@@ -53,17 +53,17 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtISBN = new System.Windows.Forms.TextBox();
+            this.txtAge = new System.Windows.Forms.TextBox();
+            this.txtMova = new System.Windows.Forms.TextBox();
+            this.txtJanr = new System.Windows.Forms.TextBox();
+            this.txtAvtor = new System.Windows.Forms.TextBox();
+            this.txtStrn = new System.Windows.Forms.TextBox();
+            this.txtGod = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtNazva = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -362,17 +362,17 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Bisque;
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.txtISBN);
+            this.groupBox2.Controls.Add(this.txtAge);
+            this.groupBox2.Controls.Add(this.txtMova);
+            this.groupBox2.Controls.Add(this.txtJanr);
+            this.groupBox2.Controls.Add(this.txtAvtor);
+            this.groupBox2.Controls.Add(this.txtStrn);
+            this.groupBox2.Controls.Add(this.txtGod);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.textBox8);
+            this.groupBox2.Controls.Add(this.txtNazva);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label15);
@@ -387,89 +387,91 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Подробніше";
             // 
-            // textBox1
+            // txtISBN
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Linen;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.textBox1.Location = new System.Drawing.Point(141, 298);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(442, 22);
-            this.textBox1.TabIndex = 45;
+            this.txtISBN.BackColor = System.Drawing.Color.Linen;
+            this.txtISBN.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtISBN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtISBN.Location = new System.Drawing.Point(141, 298);
+            this.txtISBN.Name = "txtISBN";
+            this.txtISBN.ReadOnly = true;
+            this.txtISBN.Size = new System.Drawing.Size(442, 22);
+            this.txtISBN.TabIndex = 45;
             // 
-            // textBox2
+            // txtAge
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Linen;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.textBox2.Location = new System.Drawing.Point(141, 216);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(442, 22);
-            this.textBox2.TabIndex = 44;
+            this.txtAge.BackColor = System.Drawing.Color.Linen;
+            this.txtAge.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtAge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtAge.Location = new System.Drawing.Point(141, 216);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.ReadOnly = true;
+            this.txtAge.Size = new System.Drawing.Size(442, 22);
+            this.txtAge.TabIndex = 44;
             // 
-            // textBox3
+            // txtMova
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Linen;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.textBox3.Location = new System.Drawing.Point(141, 169);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(442, 22);
-            this.textBox3.TabIndex = 43;
+            this.txtMova.BackColor = System.Drawing.Color.Linen;
+            this.txtMova.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMova.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtMova.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtMova.Location = new System.Drawing.Point(141, 169);
+            this.txtMova.Name = "txtMova";
+            this.txtMova.ReadOnly = true;
+            this.txtMova.Size = new System.Drawing.Size(442, 22);
+            this.txtMova.TabIndex = 43;
+            this.txtMova.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // textBox4
+            // txtJanr
             // 
-            this.textBox4.BackColor = System.Drawing.Color.Linen;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.textBox4.Location = new System.Drawing.Point(141, 132);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(442, 22);
-            this.textBox4.TabIndex = 42;
+            this.txtJanr.BackColor = System.Drawing.Color.Linen;
+            this.txtJanr.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtJanr.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtJanr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtJanr.Location = new System.Drawing.Point(141, 132);
+            this.txtJanr.Name = "txtJanr";
+            this.txtJanr.ReadOnly = true;
+            this.txtJanr.Size = new System.Drawing.Size(442, 22);
+            this.txtJanr.TabIndex = 42;
+            this.txtJanr.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
-            // textBox5
+            // txtAvtor
             // 
-            this.textBox5.BackColor = System.Drawing.Color.Linen;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.textBox5.Location = new System.Drawing.Point(141, 72);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(442, 22);
-            this.textBox5.TabIndex = 41;
+            this.txtAvtor.BackColor = System.Drawing.Color.Linen;
+            this.txtAvtor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAvtor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtAvtor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtAvtor.Location = new System.Drawing.Point(141, 72);
+            this.txtAvtor.Name = "txtAvtor";
+            this.txtAvtor.ReadOnly = true;
+            this.txtAvtor.Size = new System.Drawing.Size(442, 22);
+            this.txtAvtor.TabIndex = 41;
             // 
-            // textBox6
+            // txtStrn
             // 
-            this.textBox6.BackColor = System.Drawing.Color.Linen;
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.textBox6.Location = new System.Drawing.Point(143, 263);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(442, 22);
-            this.textBox6.TabIndex = 40;
+            this.txtStrn.BackColor = System.Drawing.Color.Linen;
+            this.txtStrn.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtStrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtStrn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtStrn.Location = new System.Drawing.Point(143, 263);
+            this.txtStrn.Name = "txtStrn";
+            this.txtStrn.ReadOnly = true;
+            this.txtStrn.Size = new System.Drawing.Size(442, 22);
+            this.txtStrn.TabIndex = 40;
             // 
-            // textBox7
+            // txtGod
             // 
-            this.textBox7.BackColor = System.Drawing.Color.Linen;
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.textBox7.Location = new System.Drawing.Point(141, 101);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(442, 22);
-            this.textBox7.TabIndex = 38;
+            this.txtGod.BackColor = System.Drawing.Color.Linen;
+            this.txtGod.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtGod.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtGod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtGod.Location = new System.Drawing.Point(141, 101);
+            this.txtGod.Name = "txtGod";
+            this.txtGod.ReadOnly = true;
+            this.txtGod.Size = new System.Drawing.Size(442, 22);
+            this.txtGod.TabIndex = 38;
             // 
             // label10
             // 
@@ -501,17 +503,17 @@
             this.label12.TabIndex = 32;
             this.label12.Text = "Вікові \r\nобмеження";
             // 
-            // textBox8
+            // txtNazva
             // 
-            this.textBox8.BackColor = System.Drawing.Color.Linen;
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.textBox8.Location = new System.Drawing.Point(141, 42);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(442, 22);
-            this.textBox8.TabIndex = 30;
+            this.txtNazva.BackColor = System.Drawing.Color.Linen;
+            this.txtNazva.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNazva.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtNazva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtNazva.Location = new System.Drawing.Point(141, 42);
+            this.txtNazva.Name = "txtNazva";
+            this.txtNazva.ReadOnly = true;
+            this.txtNazva.Size = new System.Drawing.Size(442, 22);
+            this.txtNazva.TabIndex = 30;
             // 
             // label13
             // 
@@ -617,17 +619,17 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtISBN;
+        private System.Windows.Forms.TextBox txtAge;
+        private System.Windows.Forms.TextBox txtMova;
+        private System.Windows.Forms.TextBox txtJanr;
+        private System.Windows.Forms.TextBox txtAvtor;
+        private System.Windows.Forms.TextBox txtStrn;
+        private System.Windows.Forms.TextBox txtGod;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtNazva;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
