@@ -74,9 +74,7 @@ namespace KP
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Plus frm2 = new Plus();
-            this.Hide();
-            frm2.Show();
+          
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -106,9 +104,9 @@ namespace KP
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Search frm3 = new Search();
+            Plus frm2 = new Plus();
             this.Hide();
-            frm3.Show();
+            frm2.Show();
         }
     }
 }

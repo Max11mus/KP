@@ -141,9 +141,9 @@ namespace KP
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Search frm3 = new Search();
-            this.Hide();
-            frm3.Show();
+            //Search frm3 = new Search();
+            //this.Hide();
+            //frm3.Show();
         }
 
         private void Plus_Load(object sender, EventArgs e)

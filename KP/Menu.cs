@@ -17,6 +17,9 @@ namespace KP
         public Menu()
         {
             InitializeComponent();
+
+            // Wire FormClosing so clicking the window "X" terminates the application.
+            this.FormClosing += Menu_FormClosing;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,9 +38,9 @@ namespace KP
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Search frm3 = new Search();
-            this.Hide();
-            frm3.Show();
+            //Search frm3 = new Search();
+            //this.Hide();
+            //frm3.Show();
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -110,5 +113,16 @@ namespace KP
             this.Hide();
             frm6.Show();
         }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // If the user clicked the window close button, request application shutdown.
+            // This ensures the whole process terminates even if other forms were shown/hidden.
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
+        }
+
     }
 }
