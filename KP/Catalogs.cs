@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +35,17 @@ namespace KP
             dataGridViewBooks.MultiSelect = false;
             dataGridViewBooks.ReadOnly = true;
             dataGridViewBooks.SelectionChanged += DataGridViewBooks_SelectionChanged;
+
+            // Включаємо double buffering для зменшення артефактів перерисовки (непублічне API)
+            try
+            {
+                typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)
+                    ?.SetValue(dataGridViewBooks, true, null);
+            }
+            catch
+            {
+                // ігноруємо якщо не вдалось (не критично)
+            }
         }
 
         private void SetupGridColumns()
@@ -106,6 +118,24 @@ namespace KP
                     _bindingSource.ResetBindings(false);
                 }
 
+                // ГАРАНТОВАНИЙ рефреш UI — скинемо биндинги і перерисуємо грід
+                try
+                {
+                    _bindingSource.ResetBindings(false);
+
+                    // Автопідгонка колонок, щоб текст відображався відразу
+                    dataGridViewBooks.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+                    // Очищуємо вибір і змушуємо перерисувати грід
+                    dataGridViewBooks.ClearSelection();
+                    dataGridViewBooks.Refresh();
+                    dataGridViewBooks.Invalidate();
+                }
+                catch
+                {
+                    // ігноруємо проблеми з перерисовкою, але вони малоймовірні
+                }
+
                 if (_books.Count > 0)
                 {
                     _currentIndex = 0;
@@ -124,6 +154,30 @@ namespace KP
             {
                 MessageBox.Show($"Помилка при завантаженні книг: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Виконуємо додатковий гарантований рефреш коли форма стає видимою
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            // Виконуємо через BeginInvoke, щоб завершити поточний цикл подій і дозволити UI відмалюватись
+            BeginInvoke((Action)(() =>
+            {
+                try
+                {
+                    // Якщо джерело є — оновити прив'язки і перерисувати
+                    _bindingSource.ResetBindings(false);
+                    dataGridViewBooks.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dataGridViewBooks.ClearSelection();
+                    dataGridViewBooks.Refresh();
+                    this.Refresh();
+                }
+                catch
+                {
+                    // ігноруємо помилки під час рефрешу
+                }
+            }));
         }
 
         private void DisplayBookAtIndex(int index)
