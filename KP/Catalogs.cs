@@ -454,7 +454,72 @@ namespace KP
 
         private void button2_Click_2(object sender, EventArgs e)
         {
+            // Перевіримо чи є вибрана строка
+            if (dataGridViewBooks.CurrentRow == null)
+            {
+                MessageBox.Show("Нічого не вибрано для видалення.", "Увага", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            // Поточна книга
+            var book = dataGridViewBooks.CurrentRow.DataBoundItem as Book;
+            if (book == null)
+            {
+                MessageBox.Show("Не вдалося визначити вибрану книгу.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Підтвердження від користувача
+            var result = MessageBox.Show($"Ви впевнені, що хочете видалити книгу:\n\"{book.Nazva}\" від {book.Avtor}?", "Підтвердження видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result != DialogResult.Yes) return;
+
+            try
+            {
+                // Видаляємо з _bindingList (UI) і з _books (джерело для збереження)
+                if (_bindingList != null && _bindingList.Contains(book))
+                {
+                    _bindingList.Remove(book);
+                }
+
+                if (_books != null && _books.Contains(book))
+                {
+                    _books.Remove(book);
+                }
+
+                // Зберігаємо оновлений список у файл
+                try
+                {
+                    BookDataService.SaveBooksToTxt(_books ?? new List<Book>(), BooksFileName);
+                }
+                catch (Exception saveEx)
+                {
+                    MessageBox.Show($"Помилка збереження файлу: {saveEx.Message}", "Помилка збереження", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Можна продовжити, але користувача повідомлено
+                }
+
+                // Оновимо UI: биндинги, список назв, виділення
+                _bindingSource.ResetBindings(false);
+
+
+                // Визначимо новий індекс виділення
+                if (_books != null && _books.Count > 0)
+                {
+                    _currentIndex = Math.Min(_currentIndex, _books.Count - 1);
+                    SelectRowInGrid(_currentIndex);
+                    DisplayBookAtIndex(_currentIndex);
+                }
+                else
+                {
+                    _currentIndex = -1;
+                    ClearBookDetails();
+                }
+
+                MessageBox.Show("Книга успішно видалена.", "Готово", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при видаленні: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataGridViewBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)

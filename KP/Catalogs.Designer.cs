@@ -31,9 +31,11 @@
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
+            this.ISBNBox = new System.Windows.Forms.TextBox();
+            this.VikObmecgenya = new System.Windows.Forms.TextBox();
+            this.MovaBox = new System.Windows.Forms.TextBox();
+            this.JanrBox = new System.Windows.Forms.TextBox();
+            this.AutorBox = new System.Windows.Forms.TextBox();
             this.KillkStorinok = new System.Windows.Forms.TextBox();
             this.YearBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -45,13 +47,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.AutorBox = new System.Windows.Forms.TextBox();
-            this.JanrBox = new System.Windows.Forms.TextBox();
-            this.MovaBox = new System.Windows.Forms.TextBox();
-            this.VikObmecgenya = new System.Windows.Forms.TextBox();
-            this.ISBNBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtISBN = new System.Windows.Forms.TextBox();
             this.txtAge = new System.Windows.Forms.TextBox();
@@ -69,6 +68,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -129,39 +129,60 @@
             this.groupBox1.Text = "Філтьр";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label1
+            // ISBNBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(486, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 31);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "КАТАЛОГ КНИГ";
+            this.ISBNBox.BackColor = System.Drawing.Color.Linen;
+            this.ISBNBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ISBNBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ISBNBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.ISBNBox.Location = new System.Drawing.Point(141, 298);
+            this.ISBNBox.Name = "ISBNBox";
+            this.ISBNBox.Size = new System.Drawing.Size(117, 22);
+            this.ISBNBox.TabIndex = 45;
             // 
-            // button1
+            // VikObmecgenya
             // 
-            this.button1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(18, 49);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(267, 31);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Додати до каталогу";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.VikObmecgenya.BackColor = System.Drawing.Color.Linen;
+            this.VikObmecgenya.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.VikObmecgenya.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.VikObmecgenya.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.VikObmecgenya.Location = new System.Drawing.Point(141, 216);
+            this.VikObmecgenya.Name = "VikObmecgenya";
+            this.VikObmecgenya.Size = new System.Drawing.Size(117, 22);
+            this.VikObmecgenya.TabIndex = 44;
             // 
-            // dataGridViewBooks
+            // MovaBox
             // 
-            this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBooks.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewBooks.Location = new System.Drawing.Point(312, 41);
-            this.dataGridViewBooks.Name = "dataGridViewBooks";
-            this.dataGridViewBooks.ReadOnly = true;
-            this.dataGridViewBooks.Size = new System.Drawing.Size(601, 117);
-            this.dataGridViewBooks.TabIndex = 8;
-            this.dataGridViewBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooks_CellContentClick);
+            this.MovaBox.BackColor = System.Drawing.Color.Linen;
+            this.MovaBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MovaBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MovaBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.MovaBox.Location = new System.Drawing.Point(141, 169);
+            this.MovaBox.Name = "MovaBox";
+            this.MovaBox.Size = new System.Drawing.Size(117, 22);
+            this.MovaBox.TabIndex = 43;
+            // 
+            // JanrBox
+            // 
+            this.JanrBox.BackColor = System.Drawing.Color.Linen;
+            this.JanrBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.JanrBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.JanrBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.JanrBox.Location = new System.Drawing.Point(141, 132);
+            this.JanrBox.Name = "JanrBox";
+            this.JanrBox.Size = new System.Drawing.Size(117, 22);
+            this.JanrBox.TabIndex = 42;
+            // 
+            // AutorBox
+            // 
+            this.AutorBox.BackColor = System.Drawing.Color.Linen;
+            this.AutorBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AutorBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AutorBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.AutorBox.Location = new System.Drawing.Point(141, 72);
+            this.AutorBox.Name = "AutorBox";
+            this.AutorBox.Size = new System.Drawing.Size(117, 22);
+            this.AutorBox.TabIndex = 41;
             // 
             // KillkStorinok
             // 
@@ -278,60 +299,39 @@
             this.label9.TabIndex = 25;
             this.label9.Text = "Назва";
             // 
-            // AutorBox
+            // label1
             // 
-            this.AutorBox.BackColor = System.Drawing.Color.Linen;
-            this.AutorBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AutorBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AutorBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.AutorBox.Location = new System.Drawing.Point(141, 72);
-            this.AutorBox.Name = "AutorBox";
-            this.AutorBox.Size = new System.Drawing.Size(117, 22);
-            this.AutorBox.TabIndex = 41;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(486, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(232, 31);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "КАТАЛОГ КНИГ";
             // 
-            // JanrBox
+            // button1
             // 
-            this.JanrBox.BackColor = System.Drawing.Color.Linen;
-            this.JanrBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.JanrBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.JanrBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.JanrBox.Location = new System.Drawing.Point(141, 132);
-            this.JanrBox.Name = "JanrBox";
-            this.JanrBox.Size = new System.Drawing.Size(117, 22);
-            this.JanrBox.TabIndex = 42;
+            this.button1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(18, 49);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(267, 31);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Додати до каталогу";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // MovaBox
+            // dataGridViewBooks
             // 
-            this.MovaBox.BackColor = System.Drawing.Color.Linen;
-            this.MovaBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MovaBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MovaBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.MovaBox.Location = new System.Drawing.Point(141, 169);
-            this.MovaBox.Name = "MovaBox";
-            this.MovaBox.Size = new System.Drawing.Size(117, 22);
-            this.MovaBox.TabIndex = 43;
-            // 
-            // VikObmecgenya
-            // 
-            this.VikObmecgenya.BackColor = System.Drawing.Color.Linen;
-            this.VikObmecgenya.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.VikObmecgenya.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.VikObmecgenya.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.VikObmecgenya.Location = new System.Drawing.Point(141, 216);
-            this.VikObmecgenya.Name = "VikObmecgenya";
-            this.VikObmecgenya.Size = new System.Drawing.Size(117, 22);
-            this.VikObmecgenya.TabIndex = 44;
-            // 
-            // ISBNBox
-            // 
-            this.ISBNBox.BackColor = System.Drawing.Color.Linen;
-            this.ISBNBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ISBNBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ISBNBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.ISBNBox.Location = new System.Drawing.Point(141, 298);
-            this.ISBNBox.Name = "ISBNBox";
-            this.ISBNBox.Size = new System.Drawing.Size(117, 22);
-            this.ISBNBox.TabIndex = 45;
+            this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBooks.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewBooks.Location = new System.Drawing.Point(312, 41);
+            this.dataGridViewBooks.Name = "dataGridViewBooks";
+            this.dataGridViewBooks.ReadOnly = true;
+            this.dataGridViewBooks.Size = new System.Drawing.Size(601, 117);
+            this.dataGridViewBooks.TabIndex = 8;
+            this.dataGridViewBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooks_CellContentClick);
             // 
             // button2
             // 
@@ -345,19 +345,6 @@
             this.button2.Text = "Удалити з  каталогу";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_2);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(18, 90);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(267, 31);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Редагувати з  каталогу";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button2_Click_2);
             // 
             // groupBox2
             // 
@@ -565,14 +552,25 @@
             this.label17.TabIndex = 25;
             this.label17.Text = "Назва";
             // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(18, 87);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(267, 34);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Редагувати книгу";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Catalogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(939, 734);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridViewBooks);
             this.Controls.Add(this.button1);
@@ -617,7 +615,6 @@
         private System.Windows.Forms.TextBox JanrBox;
         private System.Windows.Forms.TextBox AutorBox;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtISBN;
         private System.Windows.Forms.TextBox txtAge;
@@ -635,5 +632,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button button3;
     }
 }
