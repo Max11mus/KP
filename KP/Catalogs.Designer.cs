@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnPrevious = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ISBNBox = new System.Windows.Forms.TextBox();
             this.VikObmecgenya = new System.Windows.Forms.TextBox();
@@ -79,26 +78,13 @@
             this.btnPrevious.BackColor = System.Drawing.Color.Bisque;
             this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnPrevious.Location = new System.Drawing.Point(12, 12);
+            this.btnPrevious.Location = new System.Drawing.Point(18, 12);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(137, 31);
+            this.btnPrevious.Size = new System.Drawing.Size(267, 31);
             this.btnPrevious.TabIndex = 2;
             this.btnPrevious.Text = "Головна";
             this.btnPrevious.UseVisualStyleBackColor = false;
             this.btnPrevious.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackColor = System.Drawing.Color.Bisque;
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnNext.Location = new System.Drawing.Point(155, 12);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(137, 31);
-            this.btnNext.TabIndex = 3;
-            this.btnNext.Text = "Пошук";
-            this.btnNext.UseVisualStyleBackColor = false;
-            this.btnNext.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox1
             // 
@@ -577,7 +563,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
             this.Name = "Catalogs";
             this.Text = "Каталог";
@@ -594,7 +579,6 @@
 
         #endregion
         private System.Windows.Forms.Button btnPrevious;
-        private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

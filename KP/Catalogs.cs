@@ -46,6 +46,96 @@ namespace KP
             {
                 // ігноруємо якщо не вдалось (не критично)
             }
+
+            // Підписуємо поля фільтра на подію зміни тексту
+            try
+            {
+                NameBox.TextChanged += OnFilterChanged;
+                AutorBox.TextChanged += OnFilterChanged;
+                YearBox.TextChanged += OnFilterChanged;
+                JanrBox.TextChanged += OnFilterChanged;
+                MovaBox.TextChanged += OnFilterChanged;
+                VikObmecgenya.TextChanged += OnFilterChanged;
+                KillkStorinok.TextChanged += OnFilterChanged;
+                ISBNBox.TextChanged += OnFilterChanged;
+            }
+            catch
+            {
+                // Якщо контролів немає або підписка не вдалась — ігноруємо
+            }
+        }
+
+        // Загальний обробник для полів фільтра
+        private void OnFilterChanged(object sender, EventArgs e)
+        {
+            ApplyFilters();
+        }
+
+        // Простий фільтр по полях у groupBox1. Фільтрація нечутлива до регістру.
+        private void ApplyFilters()
+        {
+            if (_books == null) return;
+
+            string nameFilter = string.Empty;
+            string autorFilter = string.Empty;
+            string janrFilter = string.Empty;
+            string movaFilter = string.Empty;
+            string ageFilter = string.Empty;
+            string isbnFilter = string.Empty;
+            int? yearFilter = null;
+            int? pagesFilter = null;
+
+            try { nameFilter = (NameBox?.Text ?? string.Empty).Trim(); } catch { }
+            try { autorFilter = (AutorBox?.Text ?? string.Empty).Trim(); } catch { }
+            try { janrFilter = (JanrBox?.Text ?? string.Empty).Trim(); } catch { }
+            try { movaFilter = (MovaBox?.Text ?? string.Empty).Trim(); } catch { }
+            try { ageFilter = (VikObmecgenya?.Text ?? string.Empty).Trim(); } catch { }
+            try { isbnFilter = (ISBNBox?.Text ?? string.Empty).Trim(); } catch { }
+            int tmp;
+            if (int.TryParse(YearBox?.Text, out tmp)) yearFilter = tmp;
+            if (int.TryParse(KillkStorinok?.Text, out tmp)) pagesFilter = tmp;
+
+            var filtered = new List<Book>();
+
+            foreach (var b in _books)
+            {
+                if (!string.IsNullOrEmpty(nameFilter) && (b.Nazva == null || b.Nazva.IndexOf(nameFilter, StringComparison.OrdinalIgnoreCase) < 0)) continue;
+                if (!string.IsNullOrEmpty(autorFilter) && (b.Avtor == null || b.Avtor.IndexOf(autorFilter, StringComparison.OrdinalIgnoreCase) < 0)) continue;
+                if (!string.IsNullOrEmpty(janrFilter) && (b.Janr == null || b.Janr.IndexOf(janrFilter, StringComparison.OrdinalIgnoreCase) < 0)) continue;
+                if (!string.IsNullOrEmpty(movaFilter) && (b.Mova == null || b.Mova.IndexOf(movaFilter, StringComparison.OrdinalIgnoreCase) < 0)) continue;
+                if (!string.IsNullOrEmpty(ageFilter) && (b.Age == null || b.Age.IndexOf(ageFilter, StringComparison.OrdinalIgnoreCase) < 0)) continue;
+                if (!string.IsNullOrEmpty(isbnFilter) && (b.ISBN == null || b.ISBN.IndexOf(isbnFilter, StringComparison.OrdinalIgnoreCase) < 0)) continue;
+                if (yearFilter.HasValue && b.God != yearFilter.Value) continue;
+                if (pagesFilter.HasValue && b.Strn != pagesFilter.Value) continue;
+
+                filtered.Add(b);
+            }
+
+            // Оновлюємо _bindingList візуально
+            // Простий надійний спосіб: створюємо новий BindingList з відфільтрованих даних
+            // і прив'язуємо його до BindingSource — це гарантує оновлення гріда після будь-яких змін.
+            _bindingList = new BindingList<Book>(filtered);
+            _bindingSource.DataSource = _bindingList;
+            _bindingSource.ResetBindings(false);
+
+            // Оновимо UI вибір/деталі
+            if (filtered.Count > 0)
+            {
+                // Встановимо поточний індекс у відносний до головного списку, але селект у гріді — перший рядок
+                _currentIndex = _books.IndexOf(filtered[0]);
+                dataGridViewBooks.ClearSelection();
+                if (dataGridViewBooks.Rows.Count > 0)
+                {
+                    dataGridViewBooks.Rows[0].Selected = true;
+                    dataGridViewBooks.CurrentCell = dataGridViewBooks.Rows[0].Cells[0];
+                }
+                DisplayBookAtIndex(_currentIndex);
+            }
+            else
+            {
+                _currentIndex = -1;
+                ClearBookDetails();
+            }
         }
 
         private void SetupGridColumns()
@@ -103,7 +193,9 @@ namespace KP
                 // Використовуємо поле _bindingList щоб зберегти прив'язки при рефреші
                 if (_binding_list_is_null())
                 {
-                    _bindingList = new BindingList<Book>(_books);
+                    // Важливо: створюємо копію списку, щоб BindingList не використовував ту ж саму екземплярну колекцію (_books)
+                    // Інакше Clear() на BindingList буде очищати _books при фільтрації.
+                    _bindingList = new BindingList<Book>(_books.ToList());
                     _bindingSource.DataSource = _bindingList;
                 }
                 else
