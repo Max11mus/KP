@@ -396,7 +396,7 @@ namespace KP
         private void button2_Click_1(object sender, EventArgs e)
         {
             // Можна використовувати інший обробник, якщо Designer підключений до цього методу.
-            // Покликаємо основний обробник, щоб поведінка була однаковою.
+            // Покликаємо основний обробник, щоб поведінка була однакова.
             button2_Click(sender, e);
         }
 
@@ -535,6 +535,61 @@ namespace KP
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Відкриваємо форму редагування для обраної книги
+            if (dataGridViewBooks.CurrentRow == null)
+            {
+                MessageBox.Show("Нічого не вибрано для редагування.", "Увага", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var book = dataGridViewBooks.CurrentRow.DataBoundItem as Book;
+            if (book == null)
+            {
+                MessageBox.Show("Не вдалося визначити вибрану книгу.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (var editForm = new EditBookForm(book))
+            {
+                var dr = editForm.ShowDialog(this);
+                if (dr == DialogResult.OK && editForm.EditedBook != null)
+                {
+                    // Оновлюємо модель у списку і перезаписуємо файл
+                    try
+                    {
+                        int idx = _books.IndexOf(book);
+                        if (idx >= 0)
+                        {
+                            _books[idx] = editForm.EditedBook;
+                        }
+
+                        // Якщо є bindingList - оновимо його елемент
+                        if (_bindingList != null && idx >= 0 && idx < _bindingList.Count)
+                        {
+                            _bindingList[idx] = editForm.EditedBook;
+                        }
+
+                        BookDataService.SaveBooksToTxt(_books ?? new List<Book>(), BooksFileName);
+
+                        _bindingSource.ResetBindings(false);
+
+                        // Перейдемо на відредагований рядок
+                        _currentIndex = Math.Max(0, _books.IndexOf(editForm.EditedBook));
+                        SelectRowInGrid(_currentIndex);
+                        DisplayBookAtIndex(_currentIndex);
+
+                        MessageBox.Show("Книга успішно оновлена.", "Готово", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Помилка під час збереження: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

@@ -82,6 +82,9 @@
     </Compile>
     <Compile Include="Book.cs" />
     <Compile Include="Data.cs" />
+    <Compile Include="EditBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Help.cs">
       <SubType>Form</SubType>
     </Compile>
